@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="card" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.StudentControl">
+   <children>
+      <Label layoutX="27.0" layoutY="90.0" prefHeight="27.0" prefWidth="162.0" text="Enter exam code:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="codeTextField" layoutX="186.0" layoutY="88.0" promptText="please enter 4 digits">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="userIDTextField" layoutX="186.0" layoutY="157.0" prefHeight="31.0" prefWidth="187.0" promptText="please enter 6 digits">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <Button layoutX="203.0" layoutY="275.0" mnemonicParsing="false" onAction="#excecuteExam" text="Download\Excecute exam" />
+      <Button layoutX="209.0" layoutY="323.0" mnemonicParsing="false" onAction="#goToHomePressed" prefHeight="25.0" prefWidth="140.0" text="Go back to home page" />
+      <Label layoutX="27.0" layoutY="164.0" prefHeight="17.0" prefWidth="147.0" text="Enter you ID:">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="pageLabel" layoutX="246.0" layoutY="14.0" text="Exam details" />
+   </children>
+</AnchorPane>

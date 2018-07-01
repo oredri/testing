@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="447.0" prefWidth="706.0" styleClass="card" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.TeacherControl">
+   <children>
+      <TableView fx:id="questionsInExamTableView" editable="true" layoutX="421.0" layoutY="76.0" prefHeight="317.0" prefWidth="253.0">
+         <columns>
+            <TableColumn fx:id="questionNameTableView" prefWidth="132.0" text="Question name" />
+            <TableColumn fx:id="questionPointsTableView" onEditCommit="#setPoints" onEditStart="#blockBackButton" prefWidth="120.0" text="Points" />
+         </columns>
+      </TableView>
+      <TableView fx:id="questionTableView" editable="true" layoutX="41.0" layoutY="74.0" prefHeight="317.0" prefWidth="332.0">
+         <columns>
+            <TableColumn fx:id="qid" prefWidth="76.0" text="Question ID" />
+            <TableColumn fx:id="tname" prefWidth="94.0" text="Teacher name" />
+            <TableColumn fx:id="qtext" onEditCommit="#changeQuestionContentOnTable" prefWidth="161.0" text="Question text" />
+         </columns>
+      </TableView>
+      <Label fx:id="pageLabel" layoutX="294.0" layoutY="14.0" prefHeight="17.0" prefWidth="210.0" text="Update question in exam" />
+      <Button fx:id="passQuestionR" layoutX="383.0" layoutY="184.0" mnemonicParsing="false" onAction="#toQuestionInExam" text="&gt;" />
+      <Button fx:id="passQuestionL" layoutX="383.0" layoutY="222.0" mnemonicParsing="false" onAction="#removeFromTableView" text="&lt;" />
+      <Button fx:id="backButton" layoutX="412.0" layoutY="406.0" mnemonicParsing="false" onAction="#closeScreen" text="Back" />
+      <Button fx:id="updateBtn" layoutX="294.0" layoutY="406.0" mnemonicParsing="false" onAction="#updateQuestionInExam" text="Update exam" />
+      <Text fx:id="allertText" layoutX="215.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="316.13671875" />
+   </children>
+</AnchorPane>

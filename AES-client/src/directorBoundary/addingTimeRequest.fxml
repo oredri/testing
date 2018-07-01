@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="card" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.DirectorControl">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.5" />
+      <Label layoutX="65.0" layoutY="69.0" text="executedExamID">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="txtFATRexecutedExamId" editable="false" layoutX="54.0" layoutY="89.0" opacity="0.65" prefHeight="25.0" prefWidth="171.0" />
+      <Label layoutX="103.0" layoutY="194.0" text="Reason for adding time">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="txtFATRreasonAddingTime" alignment="CENTER" editable="false" layoutX="88.0" layoutY="219.0" opacity="0.65" prefHeight="120.0" prefWidth="426.0" />
+      <TextField fx:id="txtFATRTimeAdded" editable="false" layoutX="399.0" layoutY="148.0" opacity="0.65" prefHeight="25.0" prefWidth="119.0" />
+      <TextField fx:id="txtFATRTeachName" editable="false" layoutX="54.0" layoutY="143.0" opacity="0.65" prefHeight="25.0" prefWidth="171.0" />
+      <Label layoutX="62.0" layoutY="123.0" text="Teacher Name">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="411.0" layoutY="128.0" text="Time Added">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="pageLabel" layoutX="179.0" layoutY="28.0" prefHeight="35.0" prefWidth="244.0" text="Adding time requests">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+      <Button fx:id="backButton" layoutX="408.0" layoutY="350.0" mnemonicParsing="false" onAction="#backButtonPressed" text="cancel" />
+      <Button fx:id="btnATRApprove" layoutX="139.0" layoutY="350.0" mnemonicParsing="false" onAction="#answerRequest" text="Confirm Request" />
+	  <Button fx:id="btnATRreject" layoutX="275.0" layoutY="350.0" mnemonicParsing="false" onAction="#answerRequest" text="Reject Request" />
+      <TextField fx:id="txtFATRrequestId" editable="false" layoutX="399.0" layoutY="94.0" opacity="0.65" prefHeight="25.0" prefWidth="119.0" />
+      <Label layoutX="411.0" layoutY="74.0" text="requestID">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="txtStatusInApproveReq" editable="false" layoutX="258.0" layoutY="92.0" opacity="0.65" prefHeight="25.0" prefWidth="119.0" />
+      <Label layoutX="270.0" layoutY="72.0" text="Status">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children> 
+</AnchorPane>

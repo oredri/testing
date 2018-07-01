@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="441.0" styleClass="card" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.ConnectToSrv">
+   <children>
+      <ImageView fitHeight="409.0" fitWidth="435.0" layoutY="-3.0">
+         <image>
+            <Image url="@../../lib/images.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="connectBtn" layoutX="206.0" layoutY="330.0" mnemonicParsing="false" onAction="#connectPressed" prefHeight="25.0" prefWidth="141.0" text="Connect" />
+      <TextField fx:id="dbName" layoutX="200.0" layoutY="136.0" />
+      <TextField fx:id="dbPass" layoutX="200.0" layoutY="188.0" />
+      <Label fx:id="dbn" layoutX="25.0" layoutY="132.0" text="Data Base name:" textFill="#fffefe">
+         <font>
+            <Font size="23.0" />
+         </font></Label>
+      <Label fx:id="dbp" layoutX="59.0" layoutY="183.0" text="DB password:" textFill="WHITE">
+         <font>
+            <Font size="23.0" />
+         </font></Label>
+      <Label fx:id="connectedLabel" layoutX="205.0" layoutY="287.0" text="Connected" textFill="WHITE">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

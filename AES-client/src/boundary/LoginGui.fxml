@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="350.0" styleClass="card" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.UserControl">
+   <children>
+      <ImageView fitHeight="440.0" fitWidth="350.0" layoutY="-1.0" opacity="0.48" styleClass="card" />
+      <Group layoutX="26.0" layoutY="322.0">
+         <children>
+            <Label layoutX="146.0" layoutY="37.0" text="AES">
+               <font>
+                  <Font name="Agency FB Bold" size="39.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="78.0" text="Academic Exam System">
+               <font>
+                  <Font name="Agency FB" size="23.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="80.0" fitWidth="87.0" layoutX="57.0" layoutY="10.0">
+               <image>
+                  <Image url="@../Owl.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Group>
+      <Label layoutX="101.0" layoutY="9.0" text="login">
+         <font>
+            <Font name="Agency FB" size="96.0" />
+         </font>
+      </Label>
+      <Label layoutX="77.0" layoutY="134.0" text="User Name">
+         <font>
+            <Font name="Agency FB Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="userName" layoutX="80.0" layoutY="158.0" prefHeight="25.0" prefWidth="183.0" promptText="please enter your ID" />
+      <Label layoutX="80.0" layoutY="189.0" text="Password">
+         <font>
+            <Font name="Agency FB Bold" size="18.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="password" layoutX="79.0" layoutY="211.0" prefHeight="25.0" prefWidth="183.0" promptText="please enter your password" />
+      <Button fx:id="LoginBtn" layoutX="140.0" layoutY="255.0" mnemonicParsing="false" onAction="#loginPressed" text="login" />
+      <Label fx:id="errorMsg" layoutX="77.0" layoutY="294.0" text="wrong password or user name">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Label>
+      <ImageView fx:id="errorImg1" blendMode="MULTIPLY" fitHeight="59.0" fitWidth="103.0" layoutX="22.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <effect>
+            <Blend />
+         </effect>
+         <image>
+            <Image url="@../Error.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="errorImg" blendMode="MULTIPLY" fitHeight="59.0" fitWidth="103.0" layoutX="273.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <effect>
+            <Blend />
+         </effect>
+         <image>
+            <Image url="@../Error.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

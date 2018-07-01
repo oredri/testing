@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="card" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.DirectorControl">
+   <children>
+      <Button fx:id="showDetailsButton" layoutX="195.0" layoutY="331.0" mnemonicParsing="false" onAction="#showDetailsButtonPressed" text="Show details" />
+      <Label fx:id="pageLabel" layoutX="255.0" layoutY="38.0" text="requests" />
+      <TableView fx:id="requestsTable" layoutX="13.0" layoutY="87.0" prefHeight="229.0" prefWidth="573.0">
+        <columns>
+          <TableColumn fx:id="examIDColumn" prefWidth="124.0" text="ExamID" />
+          <TableColumn fx:id="teacherNameColumn" prefWidth="191.0" text="TeacherName" />
+            <TableColumn fx:id="timeAddedColumn" prefWidth="129.0" text="Time added" />
+            <TableColumn fx:id="StatusColumn" prefWidth="128.0" text="Status" />
+        </columns>
+      </TableView>
+      <Button fx:id="backButton" layoutX="329.0" layoutY="331.0" mnemonicParsing="false" onAction="#backButtonPressed" text="Cancel" />
+   </children>
+</AnchorPane>

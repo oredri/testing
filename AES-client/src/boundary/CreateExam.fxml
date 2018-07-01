@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="642.0" prefWidth="755.0" styleClass="card" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.TeacherControl">
+   <children>
+      <Button layoutX="317.0" layoutY="591.0" mnemonicParsing="false" onAction="#createExam" text="Create exam" />
+      <Label layoutX="30.0" layoutY="516.0" text="Remarks for student" />
+      <Label layoutX="298.0" layoutY="516.0" text="Remarks for teacher" />
+      <TextField fx:id="remarksForStudent" layoutX="30.0" layoutY="539.0" prefHeight="25.0" prefWidth="245.0" />
+      <TextField fx:id="remarksForTeacher" layoutX="298.0" layoutY="539.0" prefHeight="25.0" prefWidth="245.0" />
+      <Button fx:id="passQuestionL" layoutX="394.0" layoutY="239.0" mnemonicParsing="false" onAction="#removeFromTableView" text="&lt;" />
+      <Button fx:id="passQuestionR" layoutX="394.0" layoutY="204.0" mnemonicParsing="false" onAction="#toQuestionInExam" text="&gt;" />
+      <Label fx:id="pageLabel" layoutX="319.0" layoutY="6.0" prefHeight="17.0" prefWidth="106.0" text="Create exam" />
+      <Label layoutX="282.0" layoutY="432.0" text="Time for exam" />
+      <ComboBox fx:id="typeComboBox" layoutX="28.0" layoutY="450.0" prefWidth="150.0" />
+      <Label layoutX="27.0" layoutY="435.0" text="Type of exam" />
+      <Button fx:id="backButton" layoutX="421.0" layoutY="591.0" mnemonicParsing="false" onAction="#closeScreen" text="Back" />
+      <TableView fx:id="questionTableView" editable="true" layoutX="27.0" layoutY="93.0" prefHeight="317.0" prefWidth="332.0">
+         <columns>
+            <TableColumn fx:id="qid" prefWidth="76.0" text="Question ID" />
+            <TableColumn fx:id="tname" prefWidth="94.0" text="Teacher name" />
+            <TableColumn fx:id="qtext" onEditCommit="#changeQuestionContentOnTable" prefWidth="161.0" text="Question text" />
+         </columns>
+      </TableView>
+      <TableView fx:id="questionsInExamTableView" editable="true" layoutX="441.0" layoutY="93.0" prefHeight="317.0" prefWidth="253.0">
+         <columns>
+            <TableColumn fx:id="questionNameTableView" prefWidth="132.0" text="Question name" />
+            <TableColumn fx:id="questionPointsTableView" onEditCommit="#setPoints" onEditStart="#blockBackButton" prefWidth="120.0" text="Points" />
+         </columns>
+      </TableView>
+      <ComboBox fx:id="subjectsComboBox" layoutX="27.0" layoutY="56.0" onAction="#loadCourses" prefWidth="150.0" promptText="Choose subject" />
+      <TextField fx:id="timeForExamMinute" editable="false" layoutX="393.0" layoutY="463.0" prefHeight="25.0" prefWidth="59.0" text="00" />
+      <TextField fx:id="timeForExamHours" editable="false" layoutX="317.0" layoutY="463.0" prefHeight="25.0" prefWidth="59.0" text="00" />
+      <Label layoutX="382.0" layoutY="466.0" text=":" />
+      <JFXButton layoutX="281.0" layoutY="449.0" onAction="#incHours" prefHeight="25.0" prefWidth="33.0" text="▲" />
+      <JFXButton layoutX="281.0" layoutY="473.0" onAction="#decHours" prefHeight="25.0" prefWidth="33.0" text="▼" />
+      <JFXButton layoutX="453.0" layoutY="449.0" onAction="#incMinutes" prefHeight="25.0" prefWidth="33.0" text="▲" />
+      <JFXButton layoutX="453.0" layoutY="473.0" onAction="#decMinutes" prefHeight="25.0" prefWidth="33.0" text="▼" />
+      <ImageView fitHeight="75.0" fitWidth="72.0" layoutX="363.0" layoutY="56.0">
+         <image>
+            <Image url="@../TestPicture.png" />
+         </image>
+      </ImageView>
+      <ComboBox fx:id="coursesComboBox" layoutX="202.0" layoutY="56.0" onAction="#loadQuestions" prefWidth="150.0" promptText="Choose course" />
+   </children>
+</AnchorPane>
