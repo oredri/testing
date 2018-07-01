@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="610.0" prefWidth="551.0" styleClass="card" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.TeacherControl">
+   <children>
+      <Label layoutX="252.0" layoutY="490.0" text="Extend time by" />
+      <Button layoutX="284.0" layoutY="571.0" mnemonicParsing="false" onAction="#closeScreen" text="Back" />
+      <Button layoutX="215.0" layoutY="571.0" mnemonicParsing="false" onAction="#createExtendTimeRequest" text="Confirm" />
+      <TextField fx:id="timeForExamMinute" editable="false" layoutX="328.0" layoutY="508.0" prefHeight="25.0" prefWidth="59.0" text="00" />
+      <TextField fx:id="timeForExamHours" editable="false" layoutX="252.0" layoutY="508.0" prefHeight="25.0" prefWidth="59.0" text="00" />
+      <Label layoutX="318.0" layoutY="511.0" text=":" />
+      <Label fx:id="pageLabel" layoutX="232.0" layoutY="14.0" prefHeight="17.0" prefWidth="160.0" text="Extend exam time" />
+      <TextField fx:id="reasonForChange" layoutX="42.0" layoutY="508.0" prefHeight="25.0" prefWidth="150.0" />
+      <Label layoutX="43.0" layoutY="479.0" text="reason for change" />
+      <TableView fx:id="executedExamTableView" layoutX="42.0" layoutY="115.0" prefHeight="357.0" prefWidth="465.0">
+        <columns>
+          <TableColumn fx:id="executedExamIDTableView" prefWidth="155.0" text="executedExamID" />
+          <TableColumn fx:id="teacherNameTableView" minWidth="0.0" prefWidth="165.0" text="teacherName" />
+            <TableColumn fx:id="exam_idTableView" minWidth="0.0" prefWidth="144.0" text="exam_id" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="subjectsComboBox" layoutX="42.0" layoutY="70.0" onAction="#loadCourses" prefHeight="25.0" prefWidth="170.0" promptText="choose subject" />
+      <ComboBox fx:id="coursesComboBox" layoutX="235.0" layoutY="70.0" onAction="#loadExams" prefHeight="25.0" prefWidth="170.0" promptText="Choose course" />
+      <JFXButton layoutX="216.0" layoutY="494.0" onAction="#incHours" prefHeight="25.0" prefWidth="33.0" text="▲" />
+      <JFXButton layoutX="216.0" layoutY="518.0" onAction="#decHours" prefHeight="25.0" prefWidth="33.0" text="▼" />
+      <JFXButton layoutX="388.0" layoutY="494.0" onAction="#incMinutes" prefHeight="25.0" prefWidth="33.0" text="▲" />
+      <JFXButton layoutX="388.0" layoutY="518.0" onAction="#decMinutes" prefHeight="25.0" prefWidth="33.0" text="▼" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="503.0" prefWidth="972.0" styleClass="card" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.TeacherSeeExamsControl">
+   <children>
+      <TableView fx:id="ExamsForTeacher" layoutX="23.0" layoutY="113.0" prefHeight="287.0" prefWidth="924.0">
+        <columns>
+          <TableColumn fx:id="executedExamID" prefWidth="137.0" text="executed Exam ID" />
+            <TableColumn fx:id="date" prefWidth="111.0" text="Date" />
+            <TableColumn fx:id="executionTime" prefWidth="159.0" text="Execution time" />
+            <TableColumn fx:id="timeAllocated" prefWidth="119.0" text="Time allocated" />
+          <TableColumn fx:id="numOfStudentStarted" prefWidth="112.0" text="student started" />
+            <TableColumn fx:id="numOfStudentFinished" prefWidth="124.0" text="student finished" />
+            <TableColumn fx:id="numOfStudentDidntFinished" prefWidth="180.0" text="student didnt finished" />
+        </columns>
+      </TableView>
+      <Label layoutX="372.0" layoutY="34.0" prefHeight="17.0" prefWidth="131.0" text="Executed exams report" />
+      <Button layoutX="496.0" layoutY="429.0" mnemonicParsing="false" onAction="#closeScreen" text="Back" />
+      <Button fx:id="btnShowStatistic" layoutX="372.0" layoutY="429.0" mnemonicParsing="false" onAction="#showStatistic" text="Show Statistic" />
+      <Button fx:id="showStudentsButton" layoutX="255.0" layoutY="429.0" mnemonicParsing="false" onAction="#showStudentsInThisExam" text="Show Students" visible="false" />
+   </children>
+</AnchorPane>

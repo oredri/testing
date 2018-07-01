@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.DirectorControl">
+   <children>
+      <Label fx:id="chooseUserNameLabel" layoutX="241.0" layoutY="72.0" text="Choose User Name:" />
+      <Label layoutX="340.0" layoutY="159.0" text="Median" />
+      <Label layoutX="214.0" layoutY="159.0" text="Average" />
+      <TextField fx:id="medianTextField" editable="false" layoutX="391.0" layoutY="155.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField fx:id="averageTextField" editable="false" layoutX="268.0" layoutY="155.0" prefHeight="25.0" prefWidth="49.0" />
+      <Label fx:id="chooseCourseLabel" layoutX="401.0" layoutY="72.0" text="Choose Course" />
+      <ComboBox fx:id="coursesComboBox" layoutX="392.0" layoutY="89.0" onAction="#getReportByCourseCode" prefHeight="25.0" prefWidth="126.0" />
+      <Label fx:id="chooseSubjectLabel" layoutX="240.0" layoutY="72.0" text="Choose Subject" />
+      <ComboBox fx:id="subjectsComboBox" layoutX="240.0" layoutY="89.0" onAction="#loadCourses" prefHeight="25.0" prefWidth="141.0" />
+      <Label layoutX="96.0" layoutY="72.0" prefHeight="17.0" prefWidth="141.0" text="Get  Statistic Report By:" />
+      <NumberAxis layoutX="479.0" layoutY="201.0" prefHeight="210.0" prefWidth="28.0" side="LEFT" visible="false" />
+      <BarChart fx:id="barChart" alternativeRowFillVisible="false" animated="false" blendMode="HARD_LIGHT" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="67.0" layoutY="194.0" mouseTransparent="true" prefHeight="242.0" prefWidth="513.0" title="Histogram" verticalGridLinesVisible="false">
+         <xAxis>
+            <CategoryAxis label="Grade" prefHeight="41.0" prefWidth="410.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></CategoryAxis>
+         </xAxis>
+         <yAxis>
+            <NumberAxis label="Number Of Student" prefHeight="130.0" prefWidth="55.0" side="LEFT" />
+         </yAxis>
+      </BarChart>
+      <ComboBox fx:id="reportByComboBox" layoutX="94.0" layoutY="89.0" onAction="#showListForChooseObject" prefHeight="25.0" prefWidth="132.0" />
+      <Label fx:id="pageLabel" layoutX="264.0" layoutY="14.0" text="Statistic report" />
+      <Button fx:id="backButton" layoutX="335.0" layoutY="477.0" mnemonicParsing="false" onAction="#backButtonPressed" text="Back" />
+      <Button fx:id="btnRefresh" layoutX="258.0" layoutY="477.0" mnemonicParsing="false" onAction="#refreshPressListener" text="Refresh" />
+      <ComboBox fx:id="chooseUserComboBox" layoutX="240.0" layoutY="89.0" onAction="#getReportUser" prefHeight="25.0" prefWidth="141.0" />
+   </children>
+</AnchorPane>

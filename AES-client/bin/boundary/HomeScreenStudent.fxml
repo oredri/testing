@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" styleClass="card" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.StudentControl">
+  <tabs>
+    <Tab fx:id="myDetails" text="My details">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="39.0" layoutY="317.0" prefHeight="27.0" prefWidth="157.0" text="My authorization:">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="authorLabel" layoutX="193.0" layoutY="317.0" prefHeight="27.0" prefWidth="133.0" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="340.0" layoutY="317.0" prefHeight="27.0" prefWidth="56.0" text="Date :">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="dateLabel" layoutX="405.0" layoutY="317.0" prefHeight="17.0" prefWidth="110.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Text layoutX="49.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello" wrappingWidth="49.638671875">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Text>
+                  <Text fx:id="userText" layoutX="116.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" underline="true" wrappingWidth="158.3603515625">
+                     <font>
+                        <Font size="17.0" />
+                     </font></Text>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab fx:id="myGrades" text="My grades">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ComboBox fx:id="choosingSubject" layoutX="22.0" layoutY="55.0" onAction="#chooseSubjectPressed" prefWidth="150.0" promptText="choose subject" />
+                  <TableView fx:id="examsTable" layoutX="85.0" layoutY="106.0" prefHeight="200.0" prefWidth="430.0">
+                    <columns>
+                      <TableColumn prefWidth="101.0" text="Exam code" />
+                        <TableColumn prefWidth="202.0" text="Course Code" />
+                      <TableColumn prefWidth="125.0" text="Grade" />
+                    </columns>
+                  </TableView>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+      <Tab fx:id="orderExam" text="Order exam copy">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ComboBox fx:id="orderChooseSubject" layoutX="33.0" layoutY="73.0" onAction="#chooseSubjectPressed" prefWidth="150.0" promptText="choose subject" />
+                  <ComboBox fx:id="chooseExam" layoutX="33.0" layoutY="126.0" prefWidth="150.0" promptText="choose exam" />
+                  <Button layoutX="250.0" layoutY="312.0" mnemonicParsing="false" text="Order exam copy" />
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab fx:id="manualExam" text="Manual exam">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="45.0" prefHeight="36.0" prefWidth="126.0" text="enter exam code:">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="manualExamCodeField" layoutX="140.0" layoutY="51.0" promptText="please enter 6 digits" />
+                  <Label fx:id="ErrorExamCode" layoutX="197.0" layoutY="229.0" prefHeight="31.0" prefWidth="207.0" text="there is no such exam " textFill="RED" underline="true" visible="false">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="downLoadButton" layoutX="250.0" layoutY="312.0" mnemonicParsing="false" onAction="#downloadPressed" text="Download exam" />
+                  <Label fx:id="errorMsg" layoutX="312.0" layoutY="52.0" prefHeight="20.0" prefWidth="119.0" text="Wrong exam code" textFill="RED" underline="true" visible="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab fx:id="computrizeExam" text="Do computrize exam">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="openExam" layoutX="250.0" layoutY="312.0" mnemonicParsing="false" onAction="#openExamPressed" text="Open exam" />
+                  <Label layoutX="14.0" layoutY="55.0" prefHeight="17.0" prefWidth="118.0" text="enter exam code:">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="examCodeField2" layoutX="140.0" layoutY="51.0" promptText="please enter 6 " />
+                  <Label fx:id="errorMsg2" layoutX="313.0" layoutY="55.0" text="Wrong exam code" textFill="RED" visible="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>

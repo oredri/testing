@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="card" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.DirectorControl">
+   <children>
+      <Button fx:id="backButton" layoutX="267.0" layoutY="361.0" mnemonicParsing="false" onAction="#backButtonPressed" text="back" />
+      <Label fx:id="pageLabel" layoutX="118.0" prefHeight="155.0" prefWidth="457.0" text="System information">
+         <font>
+            <Font name="Agency FB" size="59.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnQuestionStock" layoutX="134.0" layoutY="165.0" onAction="#GetQuestionStock" prefHeight="61.0" prefWidth="140.0" text="Question Stock" />
+      <JFXButton fx:id="btnExamStock" layoutX="335.0" layoutY="165.0" onAction="#GetExamsStock" prefHeight="61.0" prefWidth="132.0" text="Exams Stock" />
+      <JFXButton layoutX="134.0" layoutY="242.0" onAction="#getExecutedExamsStock" prefHeight="61.0" prefWidth="140.0" text="Executed exams Stock" />
+   </children>
+</AnchorPane>

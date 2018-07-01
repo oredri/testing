@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="441.0" prefWidth="591.0" styleClass="card" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.TeacherSeeExamsControl">
+   <children>
+      <Label fx:id="pageLabel" text="StatisticReportTeacher" visible="false" />
+      <Label layoutX="305.0" layoutY="56.0" text="Median" />
+      <Label layoutX="146.0" layoutY="56.0" text="Average" />
+      <TextField fx:id="medianTxtFiled" editable="false" layoutX="367.0" layoutY="52.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField fx:id="avgTxtFiled" editable="false" layoutX="209.0" layoutY="52.0" prefHeight="25.0" prefWidth="49.0" />
+      <BarChart fx:id="barChart" layoutX="68.0" layoutY="96.0" prefHeight="289.0" prefWidth="455.0">
+         <xAxis>
+            <CategoryAxis prefHeight="13.0" prefWidth="369.0" side="BOTTOM" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis prefHeight="210.0" prefWidth="28.0" side="LEFT" />
+         </yAxis>
+      </BarChart>
+      <Button fx:id="backButton" layoutX="258.0" layoutY="385.0" mnemonicParsing="false" onAction="#closeScreen" text="Back" />
+   </children>
+</AnchorPane>

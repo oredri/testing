@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <Label fx:id="pageLabel" layoutX="230.0" layoutY="25.0" prefHeight="17.0" prefWidth="123.0" text="Question Stock" />
+      <Label text="Label" />
+      <TableView layoutX="3.0" layoutY="81.0" prefHeight="278.0" prefWidth="600.0">
+        <columns>
+          <TableColumn prefWidth="94.0" text="QuestionID" />
+          <TableColumn prefWidth="56.0" text="C2" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

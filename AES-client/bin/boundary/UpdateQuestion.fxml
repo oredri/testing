@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+
+<AnchorPane prefHeight="582.0" prefWidth="1122.0" styleClass="card" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.TeacherControl">
+   <children>
+      <Button cancelButton="true" graphicTextGap="0.0" layoutX="541.0" layoutY="548.0" mnemonicParsing="false" onAction="#closeScreen" text="Back">
+         <textFill>
+            <RadialGradient centerX="0.4888888888888888" centerY="0.5095238095238095" radius="0.5">
+               <stops>
+                  <Stop color="#a3b812" />
+                  <Stop color="#f52214" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Button>
+      <Button fx:id="btnDelete" layoutX="478.0" layoutY="548.0" mnemonicParsing="false" onAction="#deleteQuestion" text="Delete">
+         <textFill>
+            <RadialGradient centerX="0.4888888888888888" centerY="0.5095238095238095" radius="0.5">
+               <stops>
+                  <Stop color="#a3b812" />
+                  <Stop color="#f52214" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Button>
+      <Label fx:id="pageLabel" layoutX="541.0" layoutY="14.0" prefHeight="17.0" prefWidth="133.0" text="Update question" />
+      <TableView fx:id="questionTableView" editable="true" layoutX="23.0" layoutY="179.0" prefHeight="356.0" prefWidth="1095.0">
+        <columns>
+          <TableColumn fx:id="qid" prefWidth="76.0" text="Question ID" />
+            <TableColumn fx:id="tname" prefWidth="94.0" text="Teacher name" />
+            <TableColumn fx:id="qtext" onEditCommit="#changeQuestionContentOnTable" prefWidth="367.0" text="Question text" />
+            <TableColumn fx:id="a1" onEditCommit="#changeAnswer1OnTable" prefWidth="91.0" text="Answer 1" />
+            <TableColumn fx:id="a2" onEditCommit="#changeAnswer2OnTable" prefWidth="119.0" text="Answer 2" />
+            <TableColumn fx:id="a3" onEditCommit="#changeAnswer3OnTable" prefWidth="105.0" text="Answer 3" />
+            <TableColumn fx:id="a4" onEditCommit="#changeAnswer4OnTable" prefWidth="100.0" text="Answer 4" />
+            <TableColumn fx:id="correctAns" onEditCommit="#changeCorrectAnswerOnTable" prefWidth="109.0" text="Correct answer" />
+            
+        </columns>
+      </TableView>
+      <ComboBox fx:id="subjectsComboBox" layoutX="22.0" layoutY="72.0" onAction="#loadCourses" prefWidth="150.0" promptText="Choose subject" />
+      <ComboBox fx:id="coursesComboBox" layoutX="22.0" layoutY="124.0" onAction="#loadQuestions" prefHeight="25.0" prefWidth="150.0" promptText="Choose course" />
+   </children>
+</AnchorPane>

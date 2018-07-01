@@ -317,6 +317,16 @@ public class UserControl implements Initializable {
 			chat.handleMessageFromClientUI(messageToServer);
 		}
 	}
+	
+	public void loginPressed(String userName,String password) throws IOException { //for testing
+			/* send message to server */
+			connect(this);
+			messageToServer[0] = "checkUserDetails";
+			messageToServer[1] = userName;
+			messageToServer[2] = password;
+			messageToServer[4] = userName;
+			chat.handleMessageFromClientUI(messageToServer);
+	}
 
 	/**
 	 * logoutPressed(ActionEvent e) Arguments:ActionEvent e The method handle logout

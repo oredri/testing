@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="646.0" prefWidth="704.0" styleClass="card" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.TeacherControl">
+   <children>
+      <TableView fx:id="studnetInExamTableView" layoutX="57.0" layoutY="185.0" onMousePressed="#loadExamCopy" prefHeight="365.0" prefWidth="587.0">
+        <columns>
+          <TableColumn fx:id="studentId" prefWidth="106.0" text="Student id" />
+          <TableColumn fx:id="studentName" prefWidth="111.0" text="Name" />
+            <TableColumn fx:id="grade" prefWidth="111.0" text="Grade" />
+            <TableColumn fx:id="status" prefWidth="111.0" text="Status" />
+            <TableColumn fx:id="reasonForChangeGrade" prefWidth="147.0" text="Reason For Change" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="executedExamsComboBox" layoutX="59.0" layoutY="144.0" onAction="#loadStudenstInExam" prefHeight="25.0" prefWidth="170.0" promptText="Choose executed exam" />
+      <ComboBox fx:id="subjectsComboBox" layoutX="59.0" layoutY="57.0" onAction="#loadCourses" prefHeight="25.0" prefWidth="170.0" promptText="choose subject" />
+      <ComboBox fx:id="coursesComboBox" layoutX="59.0" layoutY="100.0" onAction="#loadExams" prefHeight="25.0" prefWidth="170.0" promptText="Choose course" />
+      <Label fx:id="pageLabel" layoutX="305.0" layoutY="14.0" prefHeight="17.0" prefWidth="125.0" text="Check exam" />
+      <Button fx:id="backButton" layoutX="417.0" layoutY="607.0" mnemonicParsing="false" onAction="#closeScreen" text="Back" />
+      <Button fx:id="changeGradeButton" layoutX="305.0" layoutY="607.0" mnemonicParsing="false" onAction="#changeGrade" text="Change grade" />
+      <Button fx:id="confirmButton" layoutX="223.0" layoutY="607.0" mnemonicParsing="false" onAction="#confirmExecutedExam" text="Confirm" />
+      <Label layoutX="223.0" layoutY="569.0" prefHeight="17.0" prefWidth="303.0" text="(*Click twice on student to see his exam)" />
+   </children>
+</AnchorPane>
