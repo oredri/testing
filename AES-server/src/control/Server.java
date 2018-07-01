@@ -62,9 +62,9 @@ public class Server extends AbstractServer {
 	 */
 	private static int msgCounter;
 	final public static int DEFAULT_PORT = 5555;
-	MysqlConnection con;
+	 protected MysqlConnection con;
 	// Question questionDetails = new Question();
-	Object[] serverMessage = new Object[6];
+	  Object[] serverMessage = new Object[6];
 	// Constructors ****************************************************
 
 	/**
@@ -105,9 +105,8 @@ public class Server extends AbstractServer {
 	@SuppressWarnings("unchecked")
 	public void handleMessageFromClient(Object msg, ConnectionToClient client) {
 		con.runDB();
-		
 		Object[] message = (Object[]) msg; // message = message returned from Client
-		System.out.println("Message received: " + msg + " from " + client);
+	//	System.out.println("Message received: " + msg + " from " + client);
 		serverMessage[0] = message[0];
 		serverMessage[4] = message[4];
 		switch ((String) message[0]) {

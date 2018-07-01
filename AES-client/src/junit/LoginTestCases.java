@@ -17,7 +17,6 @@ public class LoginTestCases extends UserControl {
 	private ChatClientStub chatclientstub;
 	
 	public LoginTestCases() {
-	
 		try {
 			chatclientstub=new ChatClientStub(ip, DEFAULT_PORT, this);
 			chat=chatclientstub;
