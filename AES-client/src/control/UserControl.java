@@ -318,7 +318,7 @@ public class UserControl implements Initializable {
 		}
 	}
 	
-	public void loginPressed(String userName,String password) throws IOException { //for testing
+	public void loginPressed(String userName,String password) throws IOException { //for the login test
 			/* send message to server */
 			connect(this);
 			messageToServer[0] = "checkUserDetails";

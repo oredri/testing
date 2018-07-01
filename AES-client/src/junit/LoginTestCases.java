@@ -7,18 +7,18 @@ import org.junit.jupiter.api.Test;
 import control.UserControl;
 import entity.User;
 
-class InsertExistUserDetailsTestCase extends UserControl {
+class LoginTestCases extends UserControl {
 
 	private static Semaphore sem;
 	private static boolean ifDetailsExist=false;
 
-	public InsertExistUserDetailsTestCase() {
+	public LoginTestCases() {
 		sem = new Semaphore(0);
 	}
 
 	@Test
 	void test() throws IOException, InterruptedException {
-		InsertExistUserDetailsTestCase user = new InsertExistUserDetailsTestCase();
+		LoginTestCases user = new LoginTestCases();
 		user.loginPressed("k", "1234");
 		sem.acquire();
 		assertTrue(ifDetailsExist);
