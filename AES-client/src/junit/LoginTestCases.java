@@ -2,6 +2,7 @@ package junit;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 import org.junit.jupiter.api.Test;
 import control.UserControl;
@@ -9,8 +10,8 @@ import entity.User;
 
 public class LoginTestCases extends UserControl {
 
-	private static Semaphore sem;
-	private static Semaphore sem1;
+	private static Semaphore  sem;/*This semaphore used in order to wait to the previous test to finish*/
+	private static Semaphore sem1;/*This semaphore used in order to wait to the server answer*/
 	private static boolean ifDetailsExist=false;
 	private static boolean ifDetailsWrong=false;
 	private static boolean ifUserConnected=false;
@@ -21,6 +22,9 @@ public class LoginTestCases extends UserControl {
 		try {
 			chatclientstub=new ChatClientStub(ip, DEFAULT_PORT, this);
 			chat=chatclientstub;
+			
+			sem=new Semaphore(1);
+			sem1=new Semaphore(0);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -28,33 +32,38 @@ public class LoginTestCases extends UserControl {
 	}
 
 	@Test
-	void existingDetails() throws IOException, InterruptedException {
+	void existingDetails() throws IOException, InterruptedException {/*check with correct details*/
+		sem.acquire();
 		loginPressed("k", "1234");
-	
-//		if(ifDetailsExist)
-//			logoutPressed();
-//	
+		sem1.acquire();/*wait for the server answer*/
 		assertTrue(ifDetailsExist);
-		System.out.println("aviv");
-	
-		
+		sem.release();
 	}
 	
 	@Test
-	void wrongPassword() throws IOException, InterruptedException {
+	void wrongPassword() throws IOException, InterruptedException {/*check with wrong password */
+		sem.acquire();
 		loginPressed("k", "123");
+		sem1.acquire();/*wait for the server answer*/
 		assertTrue(ifDetailsWrong);
+		sem.release();
 	} 
 	
 	@Test
-	void wrongUserName() throws IOException, InterruptedException {
+	void wrongUserName() throws IOException, InterruptedException {/*check with wrong username */
+		sem.acquire();
 		loginPressed("s", "1234");
+		sem1.acquire();/*wait for the server answer*/
 		assertTrue(ifDetailsWrong);
+		sem.release();
 	} 
 	@Test
-	void userAlreadyConnected() throws IOException, InterruptedException {
+	void userAlreadyConnected() throws IOException, InterruptedException {/*check with user which already connected */
+		sem.acquire();
 		loginPressed("c", "1234");
+		sem1.acquire();/*wait for the server answer*/
 		assertTrue(ifUserConnected);
+		
 	} 
 	public void checkMessage(Object message) {
 		Object[] msg = (Object[]) message;
@@ -69,7 +78,7 @@ public class LoginTestCases extends UserControl {
 			ifUserConnected = true;
 		}
 		setMyUser(user);
-		
+		sem1.release();
 	}
 
 }
