@@ -10,7 +10,7 @@ import entity.User;
 class InsertExistUserDetailsTestCase extends UserControl {
 
 	private static Semaphore sem;
-	private static boolean ifDetailsExist;
+	private static boolean ifDetailsExist=false;
 
 	public InsertExistUserDetailsTestCase() {
 		sem = new Semaphore(0);
