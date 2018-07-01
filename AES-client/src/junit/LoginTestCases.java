@@ -2,7 +2,6 @@ package junit;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 import org.junit.jupiter.api.Test;
 import control.UserControl;
@@ -34,7 +33,9 @@ public class LoginTestCases extends UserControl {
 	@Test
 	void existingDetails() throws IOException, InterruptedException {/*check with correct details*/
 		sem.acquire();
-		loginPressed("k", "1234");
+		userNameFromLogin="k";
+		passwordLogin="1234";
+		loginPressed(null);
 		sem1.acquire();/*wait for the server answer*/
 		assertTrue(ifDetailsExist);
 		sem.release();
@@ -43,7 +44,9 @@ public class LoginTestCases extends UserControl {
 	@Test
 	void wrongPassword() throws IOException, InterruptedException {/*check with wrong password */
 		sem.acquire();
-		loginPressed("k", "123");
+		userNameFromLogin="k";
+		passwordLogin="123";
+		loginPressed(null);
 		sem1.acquire();/*wait for the server answer*/
 		assertTrue(ifDetailsWrong);
 		sem.release();
@@ -52,7 +55,9 @@ public class LoginTestCases extends UserControl {
 	@Test
 	void wrongUserName() throws IOException, InterruptedException {/*check with wrong username */
 		sem.acquire();
-		loginPressed("s", "1234");
+		userNameFromLogin="s";
+		passwordLogin="1234";
+		loginPressed(null);
 		sem1.acquire();/*wait for the server answer*/
 		assertTrue(ifDetailsWrong);
 		sem.release();
@@ -60,7 +65,9 @@ public class LoginTestCases extends UserControl {
 	@Test
 	void userAlreadyConnected() throws IOException, InterruptedException {/*check with user which already connected */
 		sem.acquire();
-		loginPressed("c", "1234");
+		userNameFromLogin="c";
+		passwordLogin="1234";
+		loginPressed(null);
 		sem1.acquire();/*wait for the server answer*/
 		assertTrue(ifUserConnected);
 		
@@ -69,11 +76,11 @@ public class LoginTestCases extends UserControl {
 		Object[] msg = (Object[]) message;
 		User user = (User) msg[1];
 		ifDetailsExist = (user == null ? false : true);
-		if( (ifDetailsExist == false) && (((String)msg[2]).equals("wrong")) )
+		if( (ifDetailsExist == false) && (((String)msg[2]).equals("wrong")))/*if the user is null and the message is "wrong"*/
 		{
 			ifDetailsWrong = true;
 		}
-		if( (ifDetailsExist == false) && (((String)msg[2]).equals("connected")) )
+		if( (ifDetailsExist == false) && (((String)msg[2]).equals("connected")) )/*if the user is null and the message is "connected"*/
 		{
 			ifUserConnected = true;
 		}

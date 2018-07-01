@@ -33,12 +33,13 @@ import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import junit.ChatClientStub;
+import junit.LoginTestCases;
 
 
 public class UserControl implements Initializable {
 	/* FXML Variables */
 	@FXML
-	private TextField userName;
+	protected TextField userName;
 	@FXML
 	protected Label userNameLabel;
 	@FXML
@@ -46,7 +47,7 @@ public class UserControl implements Initializable {
 	@FXML
 	protected Label dateLabel;
 	@FXML
-	private PasswordField password;
+	protected PasswordField password;
 	@FXML
 	private Label errorMsg;
 	@FXML
@@ -72,7 +73,8 @@ public class UserControl implements Initializable {
 	// date and author variables
 	private Calendar currentCalendar = Calendar.getInstance();
 	protected Date currentTime = currentCalendar.getTime();
-
+	protected static String userNameFromLogin;
+	protected static String passwordLogin;
 	protected SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy ");
 	protected Boolean isPerformExam;
 	private Parent home_page_parent;
@@ -107,7 +109,11 @@ public class UserControl implements Initializable {
 	 */
 	public Boolean connect(UserControl user) {
 		try {
+			if(!(this instanceof LoginTestCases))
 			chat = new ChatClient(ip, DEFAULT_PORT, user);
+			else {
+				chat = new ChatClientStub(ip, DEFAULT_PORT, this);
+			}
 	return true;
 		} catch (IOException exception) {
 			System.out.println("Error: Can't setup connection!" + " Terminating client.");
@@ -301,38 +307,50 @@ public class UserControl implements Initializable {
 	 * @author Aviv Mahulya
 	 */
 	public void loginPressed(ActionEvent e) throws IOException { 
-	
+	if(!(this instanceof LoginTestCases))
 		if (userName.getText().equals("") || password.getText().equals("")) {/* if one of the fields is empty */
 			errorMsg.setVisible(true);
 			errorImg.setVisible(true);
 			errorImg1.setVisible(true);
+			userNameFromLogin= userName.getText();
+			passwordLogin=password.getText();
 		} else {
 			/* send message to server */
 			connect(this);
 			messageToServer[0] = "checkUserDetails";
-			messageToServer[1] = userName.getText();
-			messageToServer[2] = password.getText();
-			messageToServer[4] = userName.getText();
+			messageToServer[1] = userNameFromLogin;
+			messageToServer[2] = passwordLogin;
+			messageToServer[4] =userNameFromLogin;
 			chat.handleMessageFromClientUI(messageToServer);
 		}
+	else/*this us instance of chatClientStub-used for testing*/
+	{
+		/* send message to server */
+		connect(this);
+		messageToServer[0] = "checkUserDetails";
+		messageToServer[1] = userNameFromLogin;
+		messageToServer[2] = passwordLogin;
+		messageToServer[4] =userNameFromLogin;
+		chat.handleMessageFromClientUI(messageToServer);
+	}
 	}
 	
-	public void loginPressed(String userName,String password) throws IOException { //for the login test
-
-		if (userName.equals("") || password.equals("")) {/* if one of the fields is empty */
-			errorMsg.setVisible(true);
-			errorImg.setVisible(true);
-			errorImg1.setVisible(true);
-		} else {
-			/* send message to server */
-			chat=new ChatClientStub(ip, DEFAULT_PORT, this);
-			messageToServer[0] = "checkUserDetails";
-			messageToServer[1] = userName;
-			messageToServer[2] = password;
-			messageToServer[4] = userName;
-			chat.handleMessageFromClientUI(messageToServer);
-	}
-	}
+//	public void loginPressed(String userName,String password) throws IOException { //for the login test
+//
+//		if (userName.equals("") || password.equals("")) {/* if one of the fields is empty */
+//			errorMsg.setVisible(true);
+//			errorImg.setVisible(true);
+//			errorImg1.setVisible(true);
+//		} else {
+//			/* send message to server */
+//			chat=new ChatClientStub(ip, DEFAULT_PORT, this);
+//			messageToServer[0] = "checkUserDetails";
+//			messageToServer[1] = userName;
+//			messageToServer[2] = password;
+//			messageToServer[4] = userName;
+//			chat.handleMessageFromClientUI(messageToServer);
+//	}
+//	}
 	/**
 	 * logoutPressed(ActionEvent e) Arguments:ActionEvent e The method handle logout
 	 * Button Pressed The method shall send the server message with the details of
