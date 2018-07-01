@@ -32,6 +32,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import junit.ChatClientStub;
 
 
 public class UserControl implements Initializable {
@@ -82,7 +83,7 @@ public class UserControl implements Initializable {
 
 	protected Object[] messageToServer = new Object[5];// The message the user send to the message
 	/* connections variables */
-	static String ip;// server ip
+	protected static String ip;// server ip
 	final  UserControl uc = this;
 	final public static int DEFAULT_PORT = 5555;
 	protected ChatClient chat; 
@@ -107,7 +108,7 @@ public class UserControl implements Initializable {
 	public Boolean connect(UserControl user) {
 		try {
 			chat = new ChatClient(ip, DEFAULT_PORT, user);
-			return true;
+	return true;
 		} catch (IOException exception) {
 			System.out.println("Error: Can't setup connection!" + " Terminating client.");
 			return false;
@@ -300,9 +301,7 @@ public class UserControl implements Initializable {
 	 * @author Aviv Mahulya
 	 */
 	public void loginPressed(ActionEvent e) throws IOException { 
-		
-		
-		
+	
 		if (userName.getText().equals("") || password.getText().equals("")) {/* if one of the fields is empty */
 			errorMsg.setVisible(true);
 			errorImg.setVisible(true);
@@ -319,15 +318,21 @@ public class UserControl implements Initializable {
 	}
 	
 	public void loginPressed(String userName,String password) throws IOException { //for the login test
+
+		if (userName.equals("") || password.equals("")) {/* if one of the fields is empty */
+			errorMsg.setVisible(true);
+			errorImg.setVisible(true);
+			errorImg1.setVisible(true);
+		} else {
 			/* send message to server */
-			connect(this);
+			chat=new ChatClientStub(ip, DEFAULT_PORT, this);
 			messageToServer[0] = "checkUserDetails";
 			messageToServer[1] = userName;
 			messageToServer[2] = password;
 			messageToServer[4] = userName;
 			chat.handleMessageFromClientUI(messageToServer);
 	}
-
+	}
 	/**
 	 * logoutPressed(ActionEvent e) Arguments:ActionEvent e The method handle logout
 	 * Button Pressed The method shall send the server message with the details of

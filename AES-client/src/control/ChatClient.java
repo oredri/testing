@@ -7,7 +7,7 @@ package control;
 import ocsf.client.*;
 
 import java.io.*;
-
+import junit.*;
 public class ChatClient extends AbstractClient {
 	// Instance variables **********************************************
 
@@ -15,7 +15,7 @@ public class ChatClient extends AbstractClient {
 	 * The interface type variable. It allows the implementation of the display
 	 * method in the client.
 	 */
-	UserControl clientUI;
+	protected UserControl clientUI;
 
 	// ********************* Constructors **************************//
 
@@ -32,8 +32,9 @@ public class ChatClient extends AbstractClient {
 
 	public ChatClient(String host, int port, UserControl clientUI) throws IOException {
 		super(host, port); // Call the superclass constructor
-		this.clientUI = clientUI;
-		openConnection();
+	this.clientUI = clientUI;
+	if(!(clientUI instanceof LoginTestCases))
+	openConnection();
 	}
 
 	// Instance methods ************************************************
