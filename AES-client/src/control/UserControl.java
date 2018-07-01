@@ -345,6 +345,22 @@ public class UserControl implements Initializable {
 		chat.handleMessageFromClientUI(messageToServer);
 		openScreen("boundary", "LoginGui");
 	}
+	
+	/**
+	 * logoutPressed(ActionEvent e) Arguments:ActionEvent e The method handle logout
+	 * Button Pressed The method shall send the server message with the details of
+	 * the user. The method shall open the login screen
+	 * 
+	 * @author Aviv Mahulya
+	 */
+	public void logoutPressed() throws IOException {
+		connect(this);
+		messageToServer[0] = "logoutProcess";
+		messageToServer[1] = getMyUser().getUsername();
+		messageToServer[2] = null;
+		messageToServer[4] = getMyUser().getUsername();
+		chat.handleMessageFromClientUI(messageToServer);
+	}
 
 	/**
 	 * setUserText(String userNameFromDB) Arguments:String userNameFromDB The method
