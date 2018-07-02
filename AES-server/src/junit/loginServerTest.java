@@ -107,7 +107,7 @@ public class loginServerTest {
 		msg[0] = "checkUserDetails";
 		msg[1] = "AvivGibali";
 		msg[2] = "1234";
-		msg[4] = "AvivGibali";  
+		msg[4] = "AvivGibali";   
 		server.handleMessageFromClient((Object) msg, null);
 		User checkUser=new User( "AvivGibali","987654321","Aviv Gibali","1234","connected","teacher");
 		User returnFromServer=(User)server.message[1];

@@ -76,7 +76,7 @@ public class MysqlConnection {
 	 *  Arguments:Object RequestID, String newStatus
 	 * The method set  in the DB the status of request 'RequestID' to 'newStatus'
 	 * 
-	 * @author Lior Hammer
+	 * @author Lior Hammer 
 	 */
 	public void setStatusToAddingTimeRequest(Object RequestID, String newStatus) {
 		try {
