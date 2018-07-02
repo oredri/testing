@@ -65,7 +65,6 @@ public class MysqlConnection {
 		try {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost/shitot", dbUser, dbPass);
 			System.out.println("SQL connection succeed");
-			// createTableQuestion();
 		} catch (SQLException ex) {/* handle any errors */
 			System.out.println("SQLException: " + ex.getMessage());
 			System.out.println("SQLState: " + ex.getSQLState());
@@ -275,8 +274,8 @@ public class MysqlConnection {
 					return objectToClient;
 			}
 			// if the user is existing
-			User newUser = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-					rs.getString(6)); // in section 5 need to insert "connected"
+			User newUser = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),"connected",
+					rs.getString(6));
 			objectToClient[0] = newUser;
 			performLogin(userID);
 			return objectToClient;
