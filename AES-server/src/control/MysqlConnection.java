@@ -97,7 +97,7 @@ public class MysqlConnection {
 	 * @author Aviv Mahulya
 	 */
 	public synchronized Boolean createQuestion(Object subject, Object question, Object courses) {
-		String fullQuestionNumber;
+		String fullQuestionNumber;  
 		int questionNumber;
 		int first = 0;
 		int last = 0;
