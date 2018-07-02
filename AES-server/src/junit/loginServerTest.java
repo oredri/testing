@@ -80,7 +80,7 @@ public class loginServerTest {
 		}
 		assertTrue(ifDetailsWrong);
 	}
-
+ 
 	@Test
 	void UserConnected() throws IOException, InterruptedException {/* check with user which already connected */
 		ifDetailsWrong=false;
