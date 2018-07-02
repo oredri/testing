@@ -69,7 +69,7 @@ public class loginServerTest {
 		ifDetailsWrong=false;
 		Object[] msg = new Object[5];
 		msg[0] = "checkUserDetails";
-		msg[1] = "b";
+		msg[1] = "b";  
 		msg[2] = "1234";
 		msg[4] = "b";
 
