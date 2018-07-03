@@ -22,9 +22,9 @@ public class loginServerTest {
 		ifDetailsExist = false;
 		ifDetailsWrong = false;
 	}
-
+    /** This method check if the login process work with a correct details. **/
 	@Test
-	void existingDetails() throws IOException, InterruptedException {/* check with correct details */
+	void existingDetails() throws IOException, InterruptedException {
 
 		Object[] msg = new Object[5];
 		msg[0] = "checkUserDetails";
@@ -46,8 +46,9 @@ public class loginServerTest {
 
 	}
 
+	/** This method check if the login process work with a wrong password. **/
 	@Test
-	void wrongPassword() throws IOException, InterruptedException {/* check with wrong password */
+	void wrongPassword() throws IOException, InterruptedException {
 		ifDetailsWrong=false;
 		Object[] msg = new Object[5];
 		msg[0] = "checkUserDetails";
@@ -63,9 +64,9 @@ public class loginServerTest {
 		assertTrue(ifDetailsWrong);
 
 	}
-
+	/** This method check if the login process work with a wrong username. **/
 	@Test
-	void wrongUserName() throws IOException, InterruptedException {/* check with wrong userName */
+	void wrongUserName() throws IOException, InterruptedException {
 		ifDetailsWrong=false;
 		Object[] msg = new Object[5];
 		msg[0] = "checkUserDetails";
@@ -80,9 +81,10 @@ public class loginServerTest {
 		}
 		assertTrue(ifDetailsWrong);
 	}
- 
+	
+	/** This method check if the login process work with a user which already connected. **/
 	@Test
-	void UserConnected() throws IOException, InterruptedException {/* check with user which already connected */
+	void UserConnected() throws IOException, InterruptedException {
 		ifDetailsWrong=false;
 		Object[] msg = new Object[5];
 		msg[0] = "checkUserDetails";
@@ -96,10 +98,10 @@ public class loginServerTest {
 		}
 		assertTrue(ifDetailsWrong);
 	}
-		/*
-		 *  create user object we know in the first place and check if it equal
-		 * to the user returned from the server
-		 */
+	/**
+	 * This method check if the user that returned from server 
+	 *  is the user that we axpects to returned
+	 */
 	@Test
 	void correctDetailsFromServer() throws IOException, InterruptedException {
 		ifDetailsWrong=true;//initialize to true and change to false if they true;

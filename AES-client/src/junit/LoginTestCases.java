@@ -28,9 +28,9 @@ public class LoginTestCases extends UserControl {
 			e.printStackTrace();
 		}
 	}
-
+/** This method check if the login process work with a correct details. **/
 	@Test
-	void existingDetails() throws IOException, InterruptedException {/*check with correct details*/
+	void existingDetails() throws IOException, InterruptedException {
 		sem.acquire();
 		userNameFromLogin="k";
 		passwordLogin="1234";
@@ -39,9 +39,9 @@ public class LoginTestCases extends UserControl {
 		assertTrue(ifDetailsExist);
 		sem.release();
 	}
-	
+	/** This method check if the login process work with a wrong password. **/
 	@Test
-	void wrongPassword() throws IOException, InterruptedException {/*check with wrong password */
+	void wrongPassword() throws IOException, InterruptedException {
 		sem.acquire();
 		userNameFromLogin="k";
 		passwordLogin="123";
@@ -50,9 +50,9 @@ public class LoginTestCases extends UserControl {
 		assertTrue(ifDetailsWrong);
 		sem.release();
 	} 
-	
+	/** This method check if the login process work with a wrong username. **/
 	@Test
-	void wrongUserName() throws IOException, InterruptedException {/*check with wrong username */
+	void wrongUserName() throws IOException, InterruptedException {
 		sem.acquire();
 		userNameFromLogin="s";
 		passwordLogin="1234";
@@ -61,8 +61,9 @@ public class LoginTestCases extends UserControl {
 		assertTrue(ifDetailsWrong);
 		sem.release();
 	} 
+	/** This method check if the login process work with a user which already connected. **/
 	@Test
-	void userAlreadyConnected() throws IOException, InterruptedException {/*check with user which already connected */
+	void userAlreadyConnected() throws IOException, InterruptedException {
 		sem.acquire();
 		userNameFromLogin="c";
 		passwordLogin="1234";
@@ -71,6 +72,7 @@ public class LoginTestCases extends UserControl {
 		assertTrue(ifUserConnected);
 		
 	} 
+	/** This method simulates receiving a message from the server**/
 	public void checkMessage(Object message) {
 		Object[] msg = (Object[]) message;
 		User user = (User) msg[1];
