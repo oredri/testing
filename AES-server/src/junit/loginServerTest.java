@@ -62,7 +62,7 @@ public class loginServerTest {
 			ifDetailsWrong = true;
 		}
 		assertTrue(ifDetailsWrong);
-
+ 
 	}
 	/** This method check if the login process work with a wrong username. **/
 	@Test
