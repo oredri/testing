@@ -100,7 +100,7 @@ public class loginServerTest {
 	}
 	/**
 	 * This method check if the user that returned from server 
-	 *  is the user that we axpects to returned
+	 *  is the user that we expected to returned
 	 */
 	@Test
 	void correctDetailsFromServer() throws IOException, InterruptedException {
