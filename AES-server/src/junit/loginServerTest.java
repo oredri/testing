@@ -4,6 +4,7 @@ import control.Server;
 import entity.User;
 import ocsf.server.ConnectionToClient;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
@@ -17,7 +18,6 @@ public class loginServerTest {
 	private Boolean ifDetailsWrong;
 
 	public loginServerTest() {
-
 		server = new ServerStub("root", "1234");
 		ifDetailsExist = false;
 		ifDetailsWrong = false;
@@ -37,12 +37,19 @@ public class loginServerTest {
 			if (server.message[0].equals("checkUserDetails")) {
 				if (((User) server.message[1]).getUsername().equals(("k"))) {
 					ifDetailsExist = true;
+					//logout process
+					msg[0] = "logoutProcess";
+					msg[1] = "k";
+					msg[2] = "1234";
+					msg[4] = "k";   
+					server.handleMessageFromClient((Object) msg, null);
 				}
 			}
 		} else {
 			ifDetailsExist = false;
 		}
 		assertTrue(ifDetailsExist);
+		
 
 	}
 
@@ -92,11 +99,17 @@ public class loginServerTest {
 		msg[2] = "1234";
 		msg[4] = "s";
 		server.handleMessageFromClient((Object) msg, null);// first dummy login 
-		server.handleMessageFromClient((Object) msg, null);//connect again
+		server.handleMessageFromClient((Object) msg, null);//connect again supposed to return "connected" 
 		if ((server.message[1] == null) && ((server.message[2].equals("connected")))) {
 			ifDetailsWrong = true;
 		}
 		assertTrue(ifDetailsWrong);
+		//logout process
+		msg[0] = "logoutProcess";
+		msg[1] = "s";
+		msg[2] = "1234";
+		msg[4] = "s";   
+		server.handleMessageFromClient((Object) msg, null);
 	}
 	/**
 	 * This method check if the user that returned from server 
@@ -121,5 +134,50 @@ public class loginServerTest {
 			checkUser.getStatus().equals(returnFromServer.getStatus()))
 			ifDetailsWrong=false;
 		assertTrue(!ifDetailsWrong);
+		//logout process
+		msg[0] = "logoutProcess";
+		msg[1] = "AvivGibali";
+		msg[2] = "1234";
+		msg[4] = "AvivGibali";   
+		server.handleMessageFromClient((Object) msg, null);
 	}
+	
+	@Test
+	void LogoutFromConnectedUser() throws IOException, InterruptedException {	
+		User userFromServerLoguot;
+		String userStatus = "" ; 
+		
+		//login process for the first time
+		Object[] msg = new Object[5];
+		msg[0] = "checkUserDetails";
+		msg[1] = "AvivGibali";
+		msg[2] = "1234";
+		msg[4] = "AvivGibali";   
+		server.handleMessageFromClient((Object) msg, null);
+	
+		//logout process
+		msg[0] = "logoutProcess";
+		msg[1] = "AvivGibali";
+		msg[2] = "1234";
+		msg[4] = "AvivGibali";   
+		server.handleMessageFromClient((Object) msg, null);
+		
+		//login again to check if logout passed successfully 
+		msg[0] = "checkUserDetails";
+		msg[1] = "AvivGibali";
+		msg[2] = "1234";
+		msg[4] = "AvivGibali";   
+		server.handleMessageFromClient((Object) msg, null);
+		userFromServerLoguot = (User)server.message[1];
+		
+		assertTrue(userFromServerLoguot!=null);
+		
+		//logout process
+				msg[0] = "logoutProcess";
+				msg[1] = "AvivGibali";
+				msg[2] = "1234";
+				msg[4] = "AvivGibali";   
+				server.handleMessageFromClient((Object) msg, null);
+	}
+	
 }

@@ -109,16 +109,11 @@ public class UserControl implements Initializable {
 	 */
 	public Boolean connect(UserControl user) {
 		try {
-			if(!(this instanceof LoginTestCases))
-			chat = new ChatClient(ip, DEFAULT_PORT, user);
-			else {
 				chat = new ChatClientStub(ip, DEFAULT_PORT, this);
-			}
 	return true;
 		} catch (IOException exception) {
 			System.out.println("Error: Can't setup connection!" + " Terminating client.");
 			return false;
-			// System.exit(1);
 		}
 	}
 
@@ -335,22 +330,7 @@ public class UserControl implements Initializable {
 	}
 	}
 	
-//	public void loginPressed(String userName,String password) throws IOException { //for the login test
-//
-//		if (userName.equals("") || password.equals("")) {/* if one of the fields is empty */
-//			errorMsg.setVisible(true);
-//			errorImg.setVisible(true);
-//			errorImg1.setVisible(true);
-//		} else {
-//			/* send message to server */
-//			chat=new ChatClientStub(ip, DEFAULT_PORT, this);
-//			messageToServer[0] = "checkUserDetails";
-//			messageToServer[1] = userName;
-//			messageToServer[2] = password;
-//			messageToServer[4] = userName;
-//			chat.handleMessageFromClientUI(messageToServer);
-//	}
-//	}
+
 	/**
 	 * logoutPressed(ActionEvent e) Arguments:ActionEvent e The method handle logout
 	 * Button Pressed The method shall send the server message with the details of
