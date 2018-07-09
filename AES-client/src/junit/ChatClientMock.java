@@ -6,8 +6,8 @@ import control.ChatClient;
 import control.UserControl;
 import entity.User;
 
-public class ChatClientStub extends ChatClient{
-	public ChatClientStub(String host, int port, UserControl clientUI) throws IOException {
+public class ChatClientMock extends ChatClient{
+	public ChatClientMock(String host, int port, UserControl clientUI) throws IOException {
 		super(host, port, clientUI);
 		// TODO Auto-generated constructor stub
 	}

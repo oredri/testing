@@ -22,7 +22,8 @@ public class loginServerTest {
 		ifDetailsExist = false;
 		ifDetailsWrong = false;
 	}
-    /** This method check if the login process work with a correct details. **/
+
+	/** This method check if the login process work with a correct details. **/
 	@Test
 	void existingDetails() throws IOException, InterruptedException {
 
@@ -37,11 +38,11 @@ public class loginServerTest {
 			if (server.message[0].equals("checkUserDetails")) {
 				if (((User) server.message[1]).getUsername().equals(("k"))) {
 					ifDetailsExist = true;
-					//logout process
+					// logout process
 					msg[0] = "logoutProcess";
 					msg[1] = "k";
 					msg[2] = "1234";
-					msg[4] = "k";   
+					msg[4] = "k";
 					server.handleMessageFromClient((Object) msg, null);
 				}
 			}
@@ -49,14 +50,13 @@ public class loginServerTest {
 			ifDetailsExist = false;
 		}
 		assertTrue(ifDetailsExist);
-		
 
 	}
 
 	/** This method check if the login process work with a wrong password. **/
 	@Test
 	void wrongPassword() throws IOException, InterruptedException {
-		ifDetailsWrong=false;
+		ifDetailsWrong = false;
 		Object[] msg = new Object[5];
 		msg[0] = "checkUserDetails";
 		msg[1] = "k";
@@ -69,15 +69,16 @@ public class loginServerTest {
 			ifDetailsWrong = true;
 		}
 		assertTrue(ifDetailsWrong);
- 
+
 	}
+
 	/** This method check if the login process work with a wrong username. **/
 	@Test
 	void wrongUserName() throws IOException, InterruptedException {
-		ifDetailsWrong=false;
+		ifDetailsWrong = false;
 		Object[] msg = new Object[5];
 		msg[0] = "checkUserDetails";
-		msg[1] = "b";  
+		msg[1] = "b";
 		msg[2] = "1234";
 		msg[4] = "b";
 
@@ -88,96 +89,100 @@ public class loginServerTest {
 		}
 		assertTrue(ifDetailsWrong);
 	}
-	
-	/** This method check if the login process work with a user which already connected. **/
+
+	/**
+	 * This method check if the login process work with a user which already
+	 * connected.
+	 **/
 	@Test
 	void UserConnected() throws IOException, InterruptedException {
-		ifDetailsWrong=false;
+		ifDetailsWrong = false;
 		Object[] msg = new Object[5];
 		msg[0] = "checkUserDetails";
 		msg[1] = "s";
 		msg[2] = "1234";
 		msg[4] = "s";
-		server.handleMessageFromClient((Object) msg, null);// first dummy login 
-		server.handleMessageFromClient((Object) msg, null);//connect again supposed to return "connected" 
+		server.handleMessageFromClient((Object) msg, null);// first dummy login
+		server.handleMessageFromClient((Object) msg, null);// connect again supposed to return "connected"
 		if ((server.message[1] == null) && ((server.message[2].equals("connected")))) {
 			ifDetailsWrong = true;
 		}
 		assertTrue(ifDetailsWrong);
-		//logout process
+		// logout process
 		msg[0] = "logoutProcess";
 		msg[1] = "s";
 		msg[2] = "1234";
-		msg[4] = "s";   
+		msg[4] = "s";
 		server.handleMessageFromClient((Object) msg, null);
 	}
+
 	/**
-	 * This method check if the user that returned from server 
-	 *  is the user that we expected to returned
+	 * This method check if the user that returned from server is the user that we
+	 * expected to returned
 	 */
 	@Test
 	void correctDetailsFromServer() throws IOException, InterruptedException {
-		ifDetailsWrong=true;//initialize to true and change to false if they true;
+		ifDetailsWrong = true;// initialize to true and change to false if they true;
 		Object[] msg = new Object[5];
 		msg[0] = "checkUserDetails";
 		msg[1] = "AvivGibali";
 		msg[2] = "1234";
-		msg[4] = "AvivGibali";   
+		msg[4] = "AvivGibali";
 		server.handleMessageFromClient((Object) msg, null);
-		User checkUser=new User( "AvivGibali","987654321","Aviv Gibali","1234","connected","teacher");
-		User returnFromServer=(User)server.message[1];
-		if(checkUser.getUsername().equals(returnFromServer.getUsername())&&
-			checkUser.getUserID().equals(returnFromServer.getUserID())&&
-			checkUser.getFullname().equals(returnFromServer.getFullname())&&
-			checkUser.getPassword().equals(returnFromServer.getPassword())&&
-			checkUser.getRole().equals(returnFromServer.getRole())&&
-			checkUser.getStatus().equals(returnFromServer.getStatus()))
-			ifDetailsWrong=false;
+		User checkUser = new User("AvivGibali", "987654321", "Aviv Gibali", "1234", "connected", "teacher");
+		User returnFromServer = (User) server.message[1];
+		if (checkUser.getUsername().equals(returnFromServer.getUsername())
+				&& checkUser.getUserID().equals(returnFromServer.getUserID())
+				&& checkUser.getFullname().equals(returnFromServer.getFullname())
+				&& checkUser.getPassword().equals(returnFromServer.getPassword())
+				&& checkUser.getRole().equals(returnFromServer.getRole())
+				&& checkUser.getStatus().equals(returnFromServer.getStatus()))
+			ifDetailsWrong = false;
 		assertTrue(!ifDetailsWrong);
-		//logout process
+		// logout process
 		msg[0] = "logoutProcess";
 		msg[1] = "AvivGibali";
 		msg[2] = "1234";
-		msg[4] = "AvivGibali";   
+		msg[4] = "AvivGibali";
 		server.handleMessageFromClient((Object) msg, null);
 	}
-	
+
 	@Test
-	void LogoutFromConnectedUser() throws IOException, InterruptedException {	
+	void LogoutFromConnectedUser() throws IOException, InterruptedException {
 		User userFromServerLoguot;
-		String userStatus = "" ; 
-		
-		//login process for the first time
+		String userStatus = "";
+
+		// login process for the first time
 		Object[] msg = new Object[5];
 		msg[0] = "checkUserDetails";
 		msg[1] = "AvivGibali";
 		msg[2] = "1234";
-		msg[4] = "AvivGibali";   
+		msg[4] = "AvivGibali";
 		server.handleMessageFromClient((Object) msg, null);
-	
-		//logout process
+
+		// logout process
 		msg[0] = "logoutProcess";
 		msg[1] = "AvivGibali";
 		msg[2] = "1234";
-		msg[4] = "AvivGibali";   
+		msg[4] = "AvivGibali";
 		server.handleMessageFromClient((Object) msg, null);
-		
-		//login again to check if logout passed successfully 
+
+		// login again to check if logout passed successfully
 		msg[0] = "checkUserDetails";
 		msg[1] = "AvivGibali";
 		msg[2] = "1234";
-		msg[4] = "AvivGibali";   
+		msg[4] = "AvivGibali";
 		server.handleMessageFromClient((Object) msg, null);
-		userFromServerLoguot = (User)server.message[1];
-		
-		assertTrue(userFromServerLoguot!=null);
-		
-		//logout process
-				msg[0] = "logoutProcess";
-				msg[1] = "AvivGibali";
-				msg[2] = "1234";
-				msg[4] = "AvivGibali";   
-				server.handleMessageFromClient((Object) msg, null);
+		userFromServerLoguot = (User) server.message[1];
+
+		assertTrue(userFromServerLoguot != null);
+
+		// logout process
+		msg[0] = "logoutProcess";
+		msg[1] = "AvivGibali";
+		msg[2] = "1234";
+		msg[4] = "AvivGibali";
+		server.handleMessageFromClient((Object) msg, null);
 	}
-	
+
 }

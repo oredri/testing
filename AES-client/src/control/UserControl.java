@@ -32,7 +32,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import junit.ChatClientStub;
+import junit.ChatClientMock;
 import junit.LoginTestCases;
 
 
@@ -109,7 +109,7 @@ public class UserControl implements Initializable {
 	 */
 	public Boolean connect(UserControl user) {
 		try {
-				chat = new ChatClientStub(ip, DEFAULT_PORT, this);
+				chat = new ChatClientMock(ip, DEFAULT_PORT, this);
 	return true;
 		} catch (IOException exception) {
 			System.out.println("Error: Can't setup connection!" + " Terminating client.");
@@ -302,14 +302,16 @@ public class UserControl implements Initializable {
 	 * @author Aviv Mahulya
 	 */
 	public void loginPressed(ActionEvent e) throws IOException { 
-	if(!(this instanceof LoginTestCases))
-		if (userName.getText().equals("") || password.getText().equals("")) {/* if one of the fields is empty */
+		if(!(this instanceof LoginTestCases)&& (userName.getText().equals("") || password.getText().equals(""))) {/* if one of the fields is empty */
 			errorMsg.setVisible(true);
 			errorImg.setVisible(true);
 			errorImg1.setVisible(true);
+
+		} else {
+			if(!(this instanceof LoginTestCases)) {
 			userNameFromLogin= userName.getText();
 			passwordLogin=password.getText();
-		} else {
+			}
 			/* send message to server */
 			connect(this);
 			messageToServer[0] = "checkUserDetails";
@@ -318,16 +320,7 @@ public class UserControl implements Initializable {
 			messageToServer[4] =userNameFromLogin;
 			chat.handleMessageFromClientUI(messageToServer);
 		}
-	else/*this us instance of chatClientStub-used for testing*/
-	{
-		/* send message to server */
-		connect(this);
-		messageToServer[0] = "checkUserDetails";
-		messageToServer[1] = userNameFromLogin;
-		messageToServer[2] = passwordLogin;
-		messageToServer[4] =userNameFromLogin;
-		chat.handleMessageFromClientUI(messageToServer);
-	}
+
 	}
 	
 
